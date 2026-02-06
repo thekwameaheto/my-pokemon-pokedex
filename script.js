@@ -22,3 +22,31 @@ async function getPokemon() {
         card.style.display = 'none';
     }
 }
+
+async function loadPokemonList() {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000');
+        const data = await response.json();
+        
+        const pokemonList = data.results.map(p => p.name).sort();
+        
+        let listHTML = '<ul>';
+        pokemonList.forEach(name => {
+            listHTML += `<li onclick="selectPokemon('${name}')" style="cursor: pointer;">${name.charAt(0).toUpperCase() + name.slice(1)}</li>`;
+        });
+        listHTML += '</ul>';
+        
+        document.getElementById('pokemonList').innerHTML = listHTML;
+        document.getElementById('hint').style.display = 'block';
+    } catch (error) {
+        console.error('Error loading pokemon list:', error);
+    }
+}
+
+function selectPokemon(name) {
+    document.getElementById('pokemonInput').value = name;
+    getPokemon();
+}
+
+// Load pokemon list when page loads
+window.addEventListener('load', loadPokemonList);
