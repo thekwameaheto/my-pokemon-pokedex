@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Pokedex 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PokéFinder</h1>
+        <div class="search-box">
+            <input type="text" id="pokemonInput" placeholder="Enter name (e.g. pikachu)">
+            <button onclick="getPokemon()">Search</button>
+        </div>
+        
+        <div id="card" class="card" style="display: none;">
+            <h2 id="name"></h2>
+            <img id="sprite" src="" alt="Pokemon">
+            <div class="stats">
+                <p><strong>Type:</strong> <span id="type"></span></p>
+                <p><strong>Height:</strong> <span id="height"></span></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
